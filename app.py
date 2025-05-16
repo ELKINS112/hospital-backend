@@ -5,8 +5,9 @@ from models.user import User
 from create_all_role_users import create_users
 
 from flask_cors import CORS
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+#app = Flask(__name__)
+CORS(app, origins=["https://hospital-frontend-fokzrjik5-elkins-projects-6867ff50.vercel.app"])
+#CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hospital.db'
