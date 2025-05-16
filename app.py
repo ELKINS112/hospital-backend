@@ -4,9 +4,8 @@ from extensions import db
 from models.user import User
 from create_all_role_users import create_users
 
-app = Flask(__name__)
 from flask_cors import CORS
-
+app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
