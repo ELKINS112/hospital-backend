@@ -12,7 +12,24 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-# ✅ FIXED INDENTATION
 with app.app_context():
     db.create_all()
     create_users()
+
+from routes.admin import admin_bp
+from routes.doctor import doctor_bp
+from routes.nurse import nurse_bp
+from routes.lab import lab_bp
+from routes.pharmacist import pharmacist_bp
+from routes.accountant import accountant_bp
+from routes.patient import patient_bp
+from routes.auth import auth_bp
+
+app.register_blueprint(admin_bp)
+app.register_blueprint(doctor_bp)
+app.register_blueprint(nurse_bp)
+app.register_blueprint(lab_bp)
+app.register_blueprint(pharmacist_bp)
+app.register_blueprint(accountant_bp)
+app.register_blueprint(patient_bp)
+app.register_blueprint(auth_bp)
