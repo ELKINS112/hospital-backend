@@ -1,16 +1,18 @@
-from extensions import app, db, cors
-from routes.admin import admin_bp
-from create_all_role_users import *
+from flask import Flask
+from flask_cors import CORS
+from extensions import db
+from models.user import User
+from create_all_role_users import create_users
 
-app.config['SECRET_KEY'] = 'your-secret-key'
+app = Flask(__name__)
+CORS(app)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hospital.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
-    with app.app_context():
-        create_users()
-cors.init_app(app)
 
-app.register_blueprint(admin_bp)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+# ✅ FIXED INDENTATION
+with app.app_context():
+    db.create_all()
+    create_users()
