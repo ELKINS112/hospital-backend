@@ -1,9 +1,12 @@
-from flask import request, jsonify
+from flask import Blueprint, request, jsonify
 from werkzeug.security import check_password_hash
 from models.user import User
 from extensions import db
 import jwt
 import datetime
+
+# ✅ Define Blueprint before using it
+auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
