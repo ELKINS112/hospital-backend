@@ -1,9 +1,17 @@
-
 from flask import Flask
 from flask_cors import CORS
 from extensions import db
 from models.user import User
 from create_all_role_users import create_users
+
+from routes.admin import admin_bp
+from routes.doctor import doctor_bp
+from routes.nurse import nurse_bp
+from routes.lab import lab_bp
+from routes.pharmacist import pharmacist_bp
+from routes.accountant import accountant_bp
+from routes.patient import patient_bp
+from routes.auth import auth_bp
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
@@ -16,15 +24,6 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
     create_users()
-
-from routes.admin import admin_bp
-from routes.doctor import doctor_bp
-from routes.nurse import nurse_bp
-from routes.lab import lab_bp
-from routes.pharmacist import pharmacist_bp
-from routes.accountant import accountant_bp
-from routes.patient import patient_bp
-from routes.auth import auth_bp
 
 app.register_blueprint(admin_bp)
 app.register_blueprint(doctor_bp)
