@@ -21,4 +21,5 @@ def create_users():
                 role=u['role']
             )
             db.session.add(new_user)
+
     db.session.commit()
