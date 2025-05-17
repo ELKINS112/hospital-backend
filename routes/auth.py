@@ -5,7 +5,6 @@ from extensions import db
 import jwt
 import datetime
 
-auth_bp = Blueprint('auth', __name__) 
 @auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
