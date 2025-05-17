@@ -1,13 +1,12 @@
+
 from flask import Flask
 from flask_cors import CORS
 from extensions import db
 from models.user import User
 from create_all_role_users import create_users
 
-from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
-
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hospital.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
