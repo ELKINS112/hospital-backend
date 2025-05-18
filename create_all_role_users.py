@@ -21,5 +21,6 @@ def create_users():
                 role=u['role']
             )
             db.session.add(new_user)
+            print(f"✅ Added user: {u['email']} as {u['role']}")
 
     db.session.commit()
